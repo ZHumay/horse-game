@@ -54,3 +54,27 @@ transform: translateX(-19px);
 
     
 }
+#myAudio{
+    display: none;
+}
+form{
+    margin: 17px;
+    display: flex;
+   padding-right: 15px;
+
+}
+.total{
+    margin-left: 17px;
+    font-weight: bold;
+    font-size: 26px;
+}
+.horse-select{
+
+    font-weight: bold;
+}
+#horse-select{
+    margin-right: 15px;
+}
+.bet{
+    font-weight: bold;
+}
