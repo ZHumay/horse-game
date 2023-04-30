@@ -9,6 +9,7 @@ let moveHorse1IntervalId;
 let moveHorse2IntervalId;
 let moveHorse3IntervalId;
 
+let winCount = 0;
 let userBalance = 0;
 let userBet = 0;
 let selectedHorse = 0;
@@ -20,6 +21,7 @@ const horseSelect = document.querySelector("#horse-select");
 depositBtn.addEventListener("click", function () {
   userBet = Number(betAmountInput.value);
   selectedHorse = Number(horseSelect.value);
+  alert(`You have deposited${userBet}$`)
 });
 
 startbtn.addEventListener("click", startRace);
@@ -42,9 +44,20 @@ function moveHorse1() {
 
       winningHorse = 1;
       if (horseSelect.value === "horse-1" && winningHorse === 1) {
-        userBalance += userBet * 2;
-        totalAmount.textContent = userBalance;
+ 
+        winCount++;
+        totalAmount.textContent = userBet * Math.pow(2, winCount);
       }
+      else{
+        if(totalAmount.textContent-userBet<0){
+          totalAmount.textContent=0
+        }
+        else{
+          totalAmount.textContent= totalAmount.textContent-userBet
+
+        }
+
+    }
 
       horse1Position = 0;
       horse2Position = 0;
@@ -68,9 +81,20 @@ function moveHorse2() {
       alert("Horse 2 has won the race!");
       winningHorse = 2;
       if (horseSelect.value === "horse-2" && winningHorse === 2) {
-        userBalance += userBet * 2;
-        totalAmount.textContent = userBalance;
+        totalAmount.textContent = userBet*2; winCount++;
+        totalAmount.textContent = userBet * Math.pow(2, winCount);
+
       }
+      else{
+        if(totalAmount.textContent-userBet<0){
+          totalAmount.textContent=0
+        }
+        else{
+          totalAmount.textContent= totalAmount.textContent-userBet
+
+        }
+
+    }
       horse1Position = 0;
       horse2Position = 0;
       horse3Position = 0;
@@ -93,10 +117,19 @@ function moveHorse3() {
       alert("Horse 3 has won the race!");
       winningHorse = 3;
       if (horseSelect.value === "horse-3" && winningHorse === 3) {
-        userBalance += userBet * 2;
-        totalAmount.textContent = userBalance;
+        winCount++;
+        totalAmount.textContent = userBet * Math.pow(2, winCount);
       }
+      else{
+        if(totalAmount.textContent-userBet<0){
+          totalAmount.textContent=0
+        }
+        else{
+          totalAmount.textContent= totalAmount.textContent-userBet
 
+        }
+
+    }
       horse1Position = 0;
       horse2Position = 0;
       horse3Position = 0;
